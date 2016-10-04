@@ -1,0 +1,8 @@
+[package]
+name = "bytecounttest"
+version = "0.1.0"
+authors = ["Vinzent Steinberg <Vinzent.Steinberg@gmail.com>"]
+
+[dependencies]
+quickcheck = "*"
+bytecount = "*"
