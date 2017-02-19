@@ -1,0 +1,4 @@
+target
+Cargo.lock
+lemire/newlines.a
+lemire/newlines.o
