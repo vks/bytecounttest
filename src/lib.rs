@@ -41,7 +41,7 @@ mod tests {
     use bytecount::{count, naive_count};
     use quickcheck::QuickCheck;
 
-    fn prop(xs: Vec<u8>, x: u8) -> bool {
+    fn prop_count_vs_naive_count(xs: Vec<u8>, x: u8) -> bool {
         let a = count(&xs, x);
         let b = naive_count(&xs, x);
         if a != b {
@@ -51,12 +51,12 @@ mod tests {
     }
 
     #[test]
-    fn quickcheck() {
+    fn quickcheck_count_vs_naive_count() {
         let n = 1_000_000;
         QuickCheck::new()
             .tests(n)
             .max_tests(n * 100)
-            .quickcheck(prop as fn(Vec<u8>, u8) -> bool);
+            .quickcheck(prop_count_vs_naive_count as fn(Vec<u8>, u8) -> bool);
     }
 
     #[test]

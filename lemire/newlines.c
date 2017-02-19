@@ -3,7 +3,7 @@
 
 
 
-#include "benchmark.h"
+//#include "benchmark.h"
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -186,7 +186,7 @@ size_t avxcountu(char * buffer, size_t size) {
 }
 
 
-
+/*
 int main() {
     size_t N = 100000;
     char * buffer = get_random(N);
@@ -200,3 +200,4 @@ int main() {
     BEST_TIME(avxcountuu(buffer,N),tc, , repeat, N, true);
     free(buffer);
 }
+*/
