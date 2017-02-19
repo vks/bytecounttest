@@ -4,5 +4,13 @@ version = "0.1.0"
 authors = ["Vinzent Steinberg <Vinzent.Steinberg@gmail.com>"]
 
 [dependencies]
-quickcheck = "*"
-bytecount = "*"
+bytecount = "0.1"
+
+[dev-dependencies]
+quickcheck = "0.4"
+bencher = "0.1"
+lazy_static = "0.2"
+
+[[bench]]
+name = "newlinecount"
+harness = false
