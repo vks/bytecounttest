@@ -1,4 +1,4 @@
 target
 Cargo.lock
-lemire/newlines.a
+lemire/libnewlines.a
 lemire/newlines.o
