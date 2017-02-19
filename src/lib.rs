@@ -40,6 +40,7 @@ extern crate bytecount;
 mod tests {
     use bytecount::{count, naive_count};
     use quickcheck::QuickCheck;
+    use super::*;
 
     fn prop_count_vs_naive_count(xs: Vec<u8>, x: u8) -> bool {
         let a = count(&xs, x);
@@ -64,5 +65,17 @@ mod tests {
         let xs = &[0, 0, 0, 0, 0, 0, 0, 0, 33, 32, 0, 0, 0, 0, 0, 0];
         let x = 33;
         assert_eq!(count(xs, x), naive_count(xs, x));
+    }
+
+    #[test]
+    fn count_vs_newlinecount() {
+        const NL: u8 = '\n' as u8;
+        let xs = &[1, 2, 3, NL, 4, 5, 6, NL, 7, 8, 9, NL];
+        assert_eq!(count(xs, NL), newlinecount_basic(xs));
+        assert_eq!(count(xs, NL), newlinecount_memchr(xs));
+        assert_eq!(count(xs, NL), newlinecount_swar(xs));
+        assert_eq!(count(xs, NL), newlinecount_avx(xs));
+        assert_eq!(count(xs, NL), newlinecount_avxuu(xs));
+        assert_eq!(count(xs, NL), newlinecount_avxu(xs));
     }
 }
