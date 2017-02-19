@@ -1,8 +1,26 @@
 # bytecounttest
 
-This uses quickcheck to verify the two implementations offered by [bytecount]() are compatible.
+This uses quickcheck to verify the two implementations offered by
+[bytecount]() are compatible. It also includes [Daniel Lemire's C
+implementation of newline counting algorithms](https://github.com/lemire/Code-used-on-Daniel-Lemire-s-blog/blob/master/2017/02/14/newlines.c)
+and some benchmarks. To run them use `RUSTFLAGS="-C target-cpu=native"
+cargo bench`. This will likely fail if your architecture does not support
+AVX2.
 
-## Example
+## Example for benchmarks
+
+```
+test bench_count               ... bench:          29 ns/iter (+/- 1)
+test bench_naive_count         ... bench:         415 ns/iter (+/- 6)
+test bench_newlinecount_avx    ... bench:          55 ns/iter (+/- 0)
+test bench_newlinecount_avxu   ... bench:          40 ns/iter (+/- 0)
+test bench_newlinecount_avxuu  ... bench:          56 ns/iter (+/- 2)
+test bench_newlinecount_basic  ... bench:       1,873 ns/iter (+/- 44)
+test bench_newlinecount_memchr ... bench:         406 ns/iter (+/- 5)
+test bench_newlinecount_swar   ... bench:         365 ns/iter (+/- 7)
+```
+
+## Example for a quickcheck failure
 
 ```
 running 2 tests

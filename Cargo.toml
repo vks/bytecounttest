@@ -3,8 +3,9 @@ name = "bytecounttest"
 version = "0.1.0"
 authors = ["Vinzent Steinberg <Vinzent.Steinberg@gmail.com>"]
 
-[dependencies]
-bytecount = "0.1"
+[dependencies.bytecount]
+version = "0.1"
+features = ["simd-accel", "avx-accel"]
 
 [dev-dependencies]
 quickcheck = "0.4"
