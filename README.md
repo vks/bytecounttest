@@ -7,6 +7,12 @@ and some benchmarks. To run them use `RUSTFLAGS="-C target-cpu=native"
 cargo bench`. This will likely fail if your architecture does not support
 AVX2.
 
+## Known issues
+
+Due to LLVM problems, the build script might fail with `SIGILL`.
+In that case, try to use a more specific target CPU, e.g.
+`RUSTFLAGS="-C target-cpu=skylake"`.
+
 ## Example for benchmarks
 
 ```
