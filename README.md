@@ -1,11 +1,16 @@
 # bytecounttest
 
-This uses quickcheck to verify the two implementations offered by
-[bytecount]() are compatible. It also includes [Daniel Lemire's C
+This uses quickcheck and cargo-fuzz to verify the two implementations offered
+by [bytecount]() are compatible. It also includes [Daniel Lemire's C
 implementation of newline counting algorithms](https://github.com/lemire/Code-used-on-Daniel-Lemire-s-blog/blob/master/2017/02/14/newlines.c)
-and some benchmarks. To run them use `RUSTFLAGS="-C target-cpu=native"
-cargo bench`. This will likely fail if your architecture does not support
-AVX2.
+and some benchmarks.
+
+## Usage
+
+To run the quickcheck test, use `RUSTFLAGS="-C target-cpu=native" cargo test`.
+To run the benchmarks, use `RUSTFLAGS="-C target-cpu=native" cargo bench`. This
+will likely fail if your architecture does not support AVX2.
+To run the fuzzer, use `RUSTFLAGS="-C target-cpu=native" cargo fuzz run fuzzer_script_1`.
 
 ## Known issues
 
